@@ -225,6 +225,12 @@ func (ipt *IPTables) List(table, chain string) ([]string, error) {
 	return ipt.executeList(args)
 }
 
+// ListTable rules in specified table
+func (ipt *IPTables) ListTable(table string) ([]string, error) {
+	args := []string{"-t", table, "-S"}
+	return ipt.executeList(args)
+}
+
 // List rules (with counters) in specified table/chain
 func (ipt *IPTables) ListWithCounters(table, chain string) ([]string, error) {
 	args := []string{"-t", table, "-v", "-S", chain}
